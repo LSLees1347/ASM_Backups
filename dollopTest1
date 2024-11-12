@@ -1,0 +1,30 @@
+section .text
+global start
+start:
+
+        mov rax, rbx
+
+        mov rax, 10 	; source operand is a constant
+
+        mov rax, [rbx]
+        mov [rbx], rax
+        ; invalid!
+        ; mov [rax], [rbx]
+
+        mov rax, [24+rbx] 	; base is rbx, displacement is 24
+        mov [24+rbx], rax
+
+        mov rax, [array + rbx * 4]
+        mov [array + rbx * 4], rax
+
+        mov rax, [rbx + rcx]
+        mov [rbx + rcx], rax
+
+        mov rax, [rbx + rcx *4]
+        mov [rbx + rcx *4], rax
+
+        mov rax, [24 + rbx + rcx *4]
+        mov [24 + rbx + rcx *4], rax
+        
+       section .bss 
+array: resb 8192
